@@ -30,6 +30,9 @@
           %>
 
           <%= timeStamp%>
+          <%
+            out.print(session.getAttribute("sessionID"));
+          %>
         </div>
       </div>
     </div>
