@@ -18,6 +18,10 @@ and open the template in the editor.
   font-size: 4rem;
 }*/
 
+body {
+  padding: 5% 10%;
+}
+
 .justLike {
   padding: 5% 10%;
   background-color: #4FC3F7;
@@ -28,4 +32,8 @@ and open the template in the editor.
   color: red;
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
+}
+
+.form-display {
+  margin: 4rem auto;
 }
