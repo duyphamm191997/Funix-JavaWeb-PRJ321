@@ -37,3 +37,10 @@ body {
 .form-display {
   margin: 4rem auto;
 }
+
+.container getForm {
+  color: #F48FB1;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 5rem;
+}

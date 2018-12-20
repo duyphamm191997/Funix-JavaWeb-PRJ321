@@ -1,10 +1,10 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
     Document   : printFibonanci
     Created on : Dec 18, 2018, 9:49:24 PM
     Author     : demonslight998
 --%>
 
-<%@page import="java.io.IOException"%>
 <jsp:include page="fragment/header.jsp" />
 
 <div class="container justLike">

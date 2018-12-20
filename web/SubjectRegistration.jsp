@@ -27,12 +27,12 @@
 
     <label>Subjects Name</label> <br>
     <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" name="chbxDb" >
-      <label class="form-check-label" for="exampleCheck1">Database: Prisma & GraphQL</label> <br>
-      <input type="checkbox" class="form-check-input" name="chbxBack" >
-      <label class="form-check-label" for="exampleCheck1">Back-end: NodeJs</label> <br>
-      <input type="checkbox" class="form-check-input" name="chbxFront" >
-      <label class="form-check-label" for="exampleCheck1">Front-end: VueJs</label>
+      <input type="checkbox" class="form-check-input" name="chbxSubjects" value="Database: Prisma & GraphQL" >
+      <label class="form-check-label" >Database: Prisma & GraphQL</label> <br>
+      <input type="checkbox" class="form-check-input" name="chbxSubjects" value="Back-end: NodeJs">
+      <label class="form-check-label" >Back-end: NodeJs</label> <br>
+      <input type="checkbox" class="form-check-input" name="chbxSubjects" value="Front-end: VueJs">
+      <label class="form-check-label" >Front-end: VueJs</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
