@@ -16,7 +16,14 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
       <div class="my-auto">
-        <h4 class="mb-0"> ${account} </h4>
+        <%
+          String user = "${username}";
+          if (user.equals("system")) { %>
+        <h4 class="mb-0"> Wellcome ${username} to my website ! </h4>
+        <%  }
+        %>
+
+        <br>
         <h1 class="mb-0">Trần Quang
           <span class="text-primary">Nhật</span>
         </h1>

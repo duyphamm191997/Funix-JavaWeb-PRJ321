@@ -43,19 +43,24 @@ public class LoginController extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    String name = request.getParameter("name");
-    String surname = request.getParameter("surname");
-    String phoneNumber = request.getParameter("phoneNumber");
-    String email = request.getParameter("email");
-    String[] chbxValues = request.getParameterValues("chbxSubjects");
+    String username = request.getParameter("name");
+    String password = request.getParameter("password");
 
-    request.setAttribute("name", name);
-    request.setAttribute("surname", surname);
-    request.setAttribute("phoneNumber", phoneNumber);
-    request.setAttribute("email", email);
-    request.setAttribute("chbxValues", chbxValues);
+    String userDefault = request.getServletContext().getInitParameter("username");
+    String passwordDefault = request.getServletContext().getInitParameter("password");
 
-    request.getRequestDispatcher("/Result-SubjectRegistration.jsp").forward(request, response);
+    System.out.println(username + " " + userDefault + " " + password + " " + passwordDefault);
+
+    if (!username.equals(userDefault)) {
+      request.setAttribute("error", "login failded ! User not found !");
+      request.getRequestDispatcher("Login.jsp").forward(request, response);
+    } else if (username.equals(userDefault) && !password.equals(passwordDefault)) {
+      request.setAttribute("error", "login failded ! Password is wrong !");
+      request.getRequestDispatcher("Login.jsp").forward(request, response);
+    } else {
+      request.setAttribute("username", username);
+      request.getRequestDispatcher("page.jsp").forward(request, response);
+    }
   }
 
   /**
