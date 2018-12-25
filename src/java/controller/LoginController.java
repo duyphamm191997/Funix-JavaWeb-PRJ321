@@ -49,13 +49,11 @@ public class LoginController extends HttpServlet {
     String userDefault = request.getServletContext().getInitParameter("username");
     String passwordDefault = request.getServletContext().getInitParameter("password");
 
-    System.out.println(username + " " + userDefault + " " + password + " " + passwordDefault);
-
     if (!username.equals(userDefault)) {
-      request.setAttribute("error", "login failded ! User not found !");
+      request.setAttribute("error", "login failded, user not found !");
       request.getRequestDispatcher("Login.jsp").forward(request, response);
     } else if (username.equals(userDefault) && !password.equals(passwordDefault)) {
-      request.setAttribute("error", "login failded ! Password is wrong !");
+      request.setAttribute("error", "login failded, password is wrong !");
       request.getRequestDispatcher("Login.jsp").forward(request, response);
     } else {
       request.setAttribute("username", username);

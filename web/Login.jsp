@@ -6,7 +6,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="fragment/header.jsp" />
 
+
 <div class="container form-display">
+  <h3 style="color: red">${error}</h3>
   <form action="/LoginController" method="POST">
     <div class="form-group">
       <label>Username</label>
