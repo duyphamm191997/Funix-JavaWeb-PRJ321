@@ -1,4 +1,4 @@
-B1 : Vui lòng chạy file "printOdd.jsp" || http://localhost:8084/printOdd.jsp
-B2 : Vui lòng chạy file "printFibonacci.jsp" || http://localhost:8084/printFibonacci.jsp
-B3 : Vui lòng chạy file "SubjectRegistration.jsp" || http://localhost:8084
+B1 : Template được chia ra từng phần và để trong phần fragment
+B2 : Chạy Login.jsp và nó sẽ forward sang page.jsp
+B3 : Chạy file LoginCourseForm => Nó sẽ forward qua CourseForm => Forward qua Result.jsp
 
