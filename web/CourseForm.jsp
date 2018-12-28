@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
     Document   : CourseForm
     Created on : Dec 26, 2018, 9:02:58 PM
@@ -5,11 +6,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="fragment/header.jsp" />
+<jsp:include page="fragment/header.jsp"/>
 
-<h4 style="color: red">${error}</h4>
-<div class="container form-display">
-  <h3 style="color: red">${error}</h3>
+<div class="container" style="padding-top: 3rem;">
+  <h4 style="color: red">${error}</h4>
   <form action="/CourseValidation" method="POST">
     <div class="form-group">
       <label>Full Name</label>
@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label>Country</label> <br>
-      <select class="form-control">
+      <select name="country" class="form-control">
         <option value="Vietnamese">Vietnamese</option>
         <option value="American" >American</option>
         <option value="English">English</option>
@@ -31,9 +31,9 @@
     </div>
     <div class="form-group">
       <label>Course</label>
-      <select multiple class="form-control">
+      <select name="course" multiple class="form-control">
         <option value="C#">C#</option>
-        <option value="Java">Java</option>
+        <option selected="true" value="Java">Java</option>
         <option value="C++">C++</option>
         <option value="Python">Python</option>
         <option value="Ruby on Rail">Ruby on Rail</option>
@@ -43,19 +43,19 @@
       <div class="col-sm-6">Desired Language</div>
       <div class="col-sm-4">
         <div class="form-check">
-          <input checked="true" class="form-check-input" type="checkbox">
+          <input name="language1" value="Vietnamese" checked="true" class="form-check-input" type="checkbox">
           <label class="form-check-label">
             Vietnamese
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox">
+          <input name="language2" value="English" class="form-check-input" type="checkbox">
           <label class="form-check-label">
             English
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox">
+          <input name="language3" value="French" class="form-check-input" type="checkbox">
           <label class="form-check-label">
             French
           </label>
@@ -63,11 +63,25 @@
       </div>
     </div>
     <br><button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/page.jsp" id="cancel" name="cancel" class="btn btn-success">Cancel</a>
   </form>
+  <hr>
+  <c:if test="${fullname.length() > 0}">
+    <p><a class="resultCourse">Full Name: </a> ${fullName}</p>
+    <p><a class="resultCourse">Age: </a>${ageString}</p>
+    <p><a class="resultCourse"></a>Country: ${country}</p>
+    <p><a class="resultCourse">Courses: </a></p>
+    <c:forEach var="course" items="${courses}">
+      <p class="resultCourse">${course}</p>
+    </c:forEach>
+    <p><a class="resultCourse">Language: </a></p>
+    <p>${language1}</p>
+    <p>${language2}</p>
+    <p>${language3}</p>
+  </c:if>
 </div>
 
 <script>
-  const
 
 </script>
 

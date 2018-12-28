@@ -42,6 +42,40 @@ public class CourseValidation extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
+    String fullName = request.getParameter("fullName");
+
+    String country = request.getParameter("country");
+    String[] courses = request.getParameterValues("course");
+    String language1 = request.getParameter("language1");
+    String language2 = request.getParameter("language2");
+    String language3 = request.getParameter("language3");
+
+    if (fullName.isEmpty() || fullName.matches(".*\\d+.*")) {
+      request.setAttribute("error", "Name cannot be empty and contains no digits !");
+      request.getRequestDispatcher("CourseForm.jsp").forward(request, response);
+    }
+    String ageString = request.getParameter("age");
+    int age = 0;
+    try {
+      age = Integer.parseInt(ageString);
+    } catch (Exception e) {
+      request.setAttribute("error", "Age cannot be empty !");
+      request.getRequestDispatcher("CourseForm.jsp").forward(request, response);
+    }
+    if (age < 18 && age > 40) {
+      request.setAttribute("error", "Age must be more than 18, and less than 40 !");
+      request.getRequestDispatcher("CourseForm.jsp").forward(request, response);
+    }
+
+    request.setAttribute("fullName", fullName);
+    request.setAttribute("ageString", ageString);
+    request.setAttribute("country", country);
+    request.setAttribute("courses", courses);
+    request.setAttribute("language1", language1);
+    request.setAttribute("language2", language2);
+    request.setAttribute("language3", language3);
+    request.getRequestDispatcher("CourseForm.jsp").forward(request, response);
+
   }
 
   /**
