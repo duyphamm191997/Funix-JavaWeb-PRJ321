@@ -9,7 +9,7 @@
 
 <div class="container form-display">
   <h3 style="color: red">${error}</h3>
-  <form action="/LoginController" method="POST">
+  <form action="/LoginProcess" method="POST">
     <div class="form-group">
       <label>Username</label>
       <input type="text" class="form-control" name="name" placeholder="Enter username">
@@ -18,7 +18,7 @@
       <label>Password</label>
       <input type="password" class="form-control" name="password" placeholder="Enter password">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Login</button>
   </form>
 </div>
 

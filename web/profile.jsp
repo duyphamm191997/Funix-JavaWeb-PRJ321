@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Result.jsp
-    Created on : Dec 26, 2018, 9:16:24 PM
+    Document   : Info
+    Created on : Dec 30, 2018, 9:00:32 PM
     Author     : demonslight998
 --%>
 
