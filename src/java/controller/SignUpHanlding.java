@@ -51,7 +51,11 @@ public class SignUpHanlding extends HttpServlet {
     } else if (!username.matches("^[^$#@%^&*]\\w+$")) {
       request.setAttribute("error", "Sign-up failded, Username must not contain special characters such as $#@%^&*");
       request.getRequestDispatcher("Login.jsp").forward(request, response);
+    } else {
+      request.setAttribute("error", "Sign-up failded, Username at least have 8 characters");
+      request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
+
   }
 
   /**
