@@ -49,11 +49,13 @@ public class UserCount extends HttpServlet {
           throws ServletException, IOException {
     HttpSession session = request.getSession();
     User user = (User) session.getAttribute("user");
-    List<User> listLoggedIn = new ArrayList<User>();
+    List<User> listLoggedIn = new ArrayList<>();
     if (user == null) {
       response.sendRedirect("Login.jsp");
     } else {
       listLoggedIn = (List<User>) session.getAttribute("listLoggedIn");
+      request.setAttribute("listLoggedIn", listLoggedIn);
+      request.getRequestDispatcher("userCounter.jsp").forward(request, response);
     }
   }
 

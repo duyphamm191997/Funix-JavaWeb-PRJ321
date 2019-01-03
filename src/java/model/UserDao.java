@@ -18,24 +18,18 @@ import java.util.Set;
 public class UserDao {
 
   /**
-   * To check logged-in user
+   * To check existed UserName
    *
    * @param user
-   * @param listUser
-   * @return true || false
+   * @param listLoggedIn
+   * @return
    */
-  public boolean isLogin(User user, Map listUser) {
-    Set set = listUser.entrySet();
-    Iterator iter = set.iterator();
-    while (iter.hasNext()) {
-      Map.Entry entry = (Map.Entry) iter.next();
-      String dbUsername = (String) entry.getKey();
-      String dbPassword = (String) entry.getValue();
-      if (user.getUsername().equals(dbUsername) && user.getPassword().equals(dbPassword)) {
+  public boolean isExistUser(User user, List<User> listLoggedIn) {
+    for (User item : listLoggedIn) {
+      if (item.getUsername().equals(user.getUsername())) {
         return true;
       }
     }
-
     return false;
   }
 
@@ -60,18 +54,25 @@ public class UserDao {
   }
 
   /**
-   * To check existed UserName
+   * To check logged-in user
    *
    * @param user
-   * @param listLoggedIn
-   * @return
+   * @param listUser
+   * @return true || false
    */
-  public boolean isExistUser(User user, List<User> listLoggedIn) {
-    for (User item : listLoggedIn) {
-      if (item.getUsername().equals(user.getUsername())) {
+  public boolean isLogin(User user, Map listUser) {
+    Set set = listUser.entrySet();
+    Iterator iter = set.iterator();
+    while (iter.hasNext()) {
+      Map.Entry entry = (Map.Entry) iter.next();
+      String dbUsername = (String) entry.getKey();
+      String dbPassword = (String) entry.getValue();
+      if (user.getPassword().equals(dbPassword) && user.getUsername().equals(dbUsername)) {
         return true;
       }
     }
+
     return false;
   }
+
 }

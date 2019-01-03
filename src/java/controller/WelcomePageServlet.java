@@ -5,23 +5,20 @@
  */
 package controller;
 
-import entity.MessageError;
 import entity.User;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.UserDao;
 
 /**
  *
- * @authoimport javax.servlet.http.HttpSession; r demonslight998
+ * @author demonslight998
  */
-public class SignUpHanlding extends HttpServlet {
+public class WelcomePageServlet extends HttpServlet {
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
   /**
@@ -48,41 +45,21 @@ public class SignUpHanlding extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    UserDao userDao = new UserDao();
     HttpSession session = request.getSession();
     Map listUser = new HashMap<String, String>();
-    listUser = (Map) session.getAttribute("listUser");
+    listUser.put("nhattqse05439", "nhattq123@");
 
-    String username = request.getParameter("name");
-    String password = request.getParameter("password");
-
-    if (username.length() < 6) {
-      request.setAttribute("error", MessageError.USERNAME_LENGTH);
-      request.getRequestDispatcher("signUp.jsp").forward(request, response);
+    if (session.getAttribute("newAccount") != null) {
+      User user = (User) session.getAttribute("newAccount");
+      listUser.put(user.getUsername(), user.getPassword());
     }
-    if (!username.matches("^[^$#@%^&*]\\w+$")) {
-      request.setAttribute("error", MessageError.USERNAME_FORMAT);
-      request.getRequestDispatcher("signUp.jsp").forward(request, response);
-    }
+    session.setAttribute("listUser", listUser);
 
-    if (userDao.isDuplicateUser(username, listUser)) {
-      request.setAttribute("error", MessageError.USERNAME_EXISTED);
-      request.getRequestDispatcher("signUp.jsp").forward(request, response);
+    String mess = (String) session.getAttribute("wellcome");
+    String status = "Welcome to the board";
+    if (mess == null) {
+      mess = status;
     }
-
-    if (password.length() < 8) {
-      request.setAttribute("error", MessageError.PASSWORD_LENGTH);
-      request.getRequestDispatcher("signUp.jsp").forward(request, response);
-    }
-    if (!password.matches("^((?=.*\\d)(?=.*[A-Z])(?=.*\\W).{8,})$")) {
-      request.setAttribute("error", MessageError.PASSWORD_FORMAT);
-      request.getRequestDispatcher("signUp.jsp").forward(request, response);
-    }
-
-    User newUser = new User(username, password);
-    request.setAttribute("newAccount", newUser);
-    request.getRequestDispatcher("welcomePage.jsp").forward(request, response);
-
   }
 
   /**

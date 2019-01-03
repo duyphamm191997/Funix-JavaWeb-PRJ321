@@ -24,6 +24,10 @@
         <servlet-name>UserCount</servlet-name>
         <servlet-class>controller.UserCount</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WelcomePageServlet</servlet-name>
+        <servlet-class>controller.WelcomePageServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginProcess</servlet-name>
         <url-pattern>/LoginProcess</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>UserCount</servlet-name>
         <url-pattern>/UserCount</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WelcomePageServlet</servlet-name>
+        <url-pattern>/WelcomePageServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

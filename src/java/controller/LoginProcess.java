@@ -5,8 +5,11 @@
  */
 package controller;
 
+import entity.User;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,12 +50,36 @@ public class LoginProcess extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     HttpSession session = request.getSession();
-    boolean isLogin;
-    UserDao dao = new UserDao();
+    UserDao userDao = new UserDao();
     Map listUser = new HashMap<String, String>();
 
+    listUser = (Map) session.getAttribute("listUser");
     String username = request.getParameter("name");
     String password = request.getParameter("password");
+
+    User user = new User(username, password);
+    boolean isLogin = userDao.isLogin(user, listUser);
+
+    if (isLogin) {
+      if (session.getAttribute("listLoggedIn") == null) {
+        List<User> listLoggedIn = new ArrayList<>();
+        listLoggedIn.add(user);
+        session.setAttribute("listLoggedIn", listLoggedIn);
+      } else {
+        List<User> listLoggedIn = (List<User>) session.getAttribute("listLoggedIn");
+        if (!userDao.isExistUser(user, listLoggedIn)) {
+          listLoggedIn.add(user);
+          session.setAttribute("listLoggedIn", listLoggedIn);
+        }
+      }
+      session.setAttribute("user", user);
+      request.getRequestDispatcher("Index.jsp").forward(request, response);
+    } else {
+      request.setAttribute("errorLogin", "Username or passwrod  is incorrect");
+      request.setAttribute("username", username);
+      request.setAttribute("password", password);
+      request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
 
     if (username.isEmpty() || password.isEmpty()) {
       request.setAttribute("error", "login failded, Username & Password can not be blank !");

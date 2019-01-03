@@ -51,6 +51,8 @@ public class Profile extends HttpServlet {
       response.sendRedirect("Login.jsp");
     } else {
       user = (User) session.getAttribute("user");
+      request.setAttribute("user", user);
+      request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
   }
 
