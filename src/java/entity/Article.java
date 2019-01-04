@@ -5,10 +5,68 @@
  */
 package entity;
 
+import java.sql.Date;
+
 /**
  *
  * @author demonslight998
  */
 public class Article {
+
+  private String title, contents;
+  private boolean status;
+  private int authorID;
+  private Date createdAt;
+
+  public Article() {
+  }
+
+  public Article(String title, String contents, boolean status, int authorID, Date createdAt) {
+    this.title = title;
+    this.contents = contents;
+    this.status = status;
+    this.authorID = authorID;
+    this.createdAt = createdAt;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getContents() {
+    return contents;
+  }
+
+  public void setContents(String contents) {
+    this.contents = contents;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
+  }
+
+  public int getAuthorID() {
+    return authorID;
+  }
+
+  public void setAuthorID(int authorID) {
+    this.authorID = authorID;
+  }
+
+  public Date getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
+  }
 
 }

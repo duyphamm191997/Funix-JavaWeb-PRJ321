@@ -5,11 +5,11 @@
  */
 package model;
 
-import entity.User;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import db.DBContext;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -17,61 +17,39 @@ import java.util.Set;
  */
 public class UserDao {
 
-  /**
-   * To check existed UserName
-   *
-   * @param user
-   * @param listLoggedIn
-   * @return
-   */
-  public boolean isExistUser(User user, List<User> listLoggedIn) {
-    for (User item : listLoggedIn) {
-      if (item.getUsername().equals(user.getUsername())) {
-        return true;
+  public boolean checkExistedUser(String username) throws Exception {
+    Connection con = null;
+    DBContext db = new DBContext();
+    try {
+      con = db.getConnection();
+      Statement stmt = con.createStatement();
+      String query = "";
+      ResultSet rs = stmt.executeQuery(query);
+      while (rs.next()) {
+        String firstname = rs.getString(1);
+        String lastname = rs.getString(2);
       }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
     return false;
   }
 
-  /**
-   * To check duplicated User
-   *
-   * @param username
-   * @param listUser
-   * @return
-   */
-  public boolean isDuplicateUser(String username, Map listUser) {
-    Set set = listUser.entrySet();
-    Iterator iter = set.iterator();
-    while (iter.hasNext()) {
-      Map.Entry entry = (Map.Entry) iter.next();
-      String dbUsername = (String) entry.getKey();
-      if (username.equals(dbUsername)) {
-        return true;
+  public boolean checkLogin(String username, String password) throws Exception {
+    Connection con = null;
+    DBContext db = new DBContext();
+    try {
+      con = db.getConnection();
+      Statement stmt = con.createStatement();
+      String query = "";
+      ResultSet rs = stmt.executeQuery(query);
+      while (rs.next()) {
+        String firstname = rs.getString(1);
+        String lastname = rs.getString(2);
       }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
     }
-    return false;
-  }
-
-  /**
-   * To check logged-in user
-   *
-   * @param user
-   * @param listUser
-   * @return true || false
-   */
-  public boolean isLogin(User user, Map listUser) {
-    Set set = listUser.entrySet();
-    Iterator iter = set.iterator();
-    while (iter.hasNext()) {
-      Map.Entry entry = (Map.Entry) iter.next();
-      String dbUsername = (String) entry.getKey();
-      String dbPassword = (String) entry.getValue();
-      if (user.getPassword().equals(dbPassword) && user.getUsername().equals(dbUsername)) {
-        return true;
-      }
-    }
-
     return false;
   }
 

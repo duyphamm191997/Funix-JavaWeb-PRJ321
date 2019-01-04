@@ -5,19 +5,11 @@
  */
 package controller;
 
-import entity.MessageError;
-import entity.User;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.UserDao;
 
 /**
  *
@@ -50,40 +42,6 @@ public class LoginProcess extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    UserDao userDao = new UserDao();
-    Map listUser = new HashMap<String, String>();
-
-    listUser = (Map) session.getAttribute("listUser");
-    String username = request.getParameter("name");
-    String password = request.getParameter("password");
-
-    User user = new User(username, password);
-    boolean isLogin = userDao.isLogin(user, listUser);
-
-    if (username.isEmpty() || password.isEmpty()) {
-      request.setAttribute("error", MessageError.LOGIN_FORMAT);
-      request.getRequestDispatcher("Login.jsp").forward(request, response);
-    }
-
-    if (isLogin) {
-      if (session.getAttribute("listLoggedIn") == null) {
-        List<User> listLoggedIn = new ArrayList<>();
-        listLoggedIn.add(user);
-        session.setAttribute("listLoggedIn", listLoggedIn);
-      } else {
-        List<User> listLoggedIn = (List<User>) session.getAttribute("listLoggedIn");
-        if (!userDao.isExistUser(user, listLoggedIn)) {
-          listLoggedIn.add(user);
-          session.setAttribute("listLoggedIn", listLoggedIn);
-        }
-      }
-      session.setAttribute("user", user);
-      request.getRequestDispatcher("Index.jsp").forward(request, response);
-    } else {
-      request.setAttribute("errorLogin", MessageError.LOGIN_INCORRECT);
-      request.getRequestDispatcher("Login.jsp").forward(request, response);
-    }
   }
 
   /**
