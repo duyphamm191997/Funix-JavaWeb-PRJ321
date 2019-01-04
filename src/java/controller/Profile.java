@@ -54,6 +54,7 @@ public class Profile extends HttpServlet {
       request.setAttribute("user", user);
       request.getRequestDispatcher("profile.jsp").forward(request, response);
     }
+
   }
 
   /**

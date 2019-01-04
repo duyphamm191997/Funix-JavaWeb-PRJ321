@@ -84,7 +84,6 @@ public class LoginProcess extends HttpServlet {
       request.setAttribute("errorLogin", MessageError.LOGIN_INCORRECT);
       request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
-
   }
 
   /**
