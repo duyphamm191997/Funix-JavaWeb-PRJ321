@@ -5,6 +5,7 @@
  */
 package controller;
 
+import entity.MessageError;
 import entity.User;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -60,6 +61,11 @@ public class LoginProcess extends HttpServlet {
     User user = new User(username, password);
     boolean isLogin = userDao.isLogin(user, listUser);
 
+    if (username.isEmpty() || password.isEmpty()) {
+      request.setAttribute("error", MessageError.LOGIN_FORMAT);
+      request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
+
     if (isLogin) {
       if (session.getAttribute("listLoggedIn") == null) {
         List<User> listLoggedIn = new ArrayList<>();
@@ -75,26 +81,10 @@ public class LoginProcess extends HttpServlet {
       session.setAttribute("user", user);
       request.getRequestDispatcher("Index.jsp").forward(request, response);
     } else {
-      request.setAttribute("errorLogin", "Username or passwrod  is incorrect");
-      request.setAttribute("username", username);
-      request.setAttribute("password", password);
+      request.setAttribute("errorLogin", MessageError.LOGIN_INCORRECT);
       request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
 
-    if (username.isEmpty() || password.isEmpty()) {
-      request.setAttribute("error", "login failded, Username & Password can not be blank !");
-      request.getRequestDispatcher("Login.jsp").forward(request, response);
-    }
-//    if (!account.containsKey(username)) {
-//      request.setAttribute("error", "login failded, user not found !");
-//      request.getRequestDispatcher("Login.jsp").forward(request, response);
-//    } else if (account.containsKey(username) && !account.get(username).equals(password)) {
-//      request.setAttribute("error", "login failded, password is wrong !");
-//      request.getRequestDispatcher("Login.jsp").forward(request, response);
-//    } else {
-//      request.setAttribute("username", username);
-//      request.getRequestDispatcher("CourseForm.jsp").forward(request, response);
-//    }
   }
 
   /**

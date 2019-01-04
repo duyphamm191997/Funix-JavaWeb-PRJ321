@@ -17,5 +17,6 @@ public class MessageError {
   public static final String PASSWORD_LENGTH = "Sign-up failded, Password at least have 8 characters";
   public static final String PASSWORD_FORMAT = "Sign-up failded, Password must contain at least one capital letter, one digit,"
           + " one special character";
-
+  public static final String LOGIN_INCORRECT = "Login failded, Username or passwrod  is incorrect";
+  public static final String LOGIN_FORMAT = "Login failded, Username & Password can not be blank !";
 }
