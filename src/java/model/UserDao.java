@@ -17,17 +17,17 @@ import java.sql.Statement;
  */
 public class UserDao {
 
-  public boolean checkExistedUser(String username) throws Exception {
+  public boolean checkExistedUser(String usernameXXX) throws Exception {
     Connection con = null;
     DBContext db = new DBContext();
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      String query = "";
+      String query = "SELECT a.username FROM dbo.Account AS a WHERE a.username = " + usernameXXX;
       ResultSet rs = stmt.executeQuery(query);
       while (rs.next()) {
-        String firstname = rs.getString(1);
-        String lastname = rs.getString(2);
+        String username = rs.getString(1);
+        return username.equals(usernameXXX);
       }
     } catch (SQLException ex) {
       ex.printStackTrace();
@@ -35,22 +35,21 @@ public class UserDao {
     return false;
   }
 
-  public boolean checkLogin(String username, String password) throws Exception {
+  public boolean checkPassword(String username, String pass) {
     Connection con = null;
     DBContext db = new DBContext();
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      String query = "";
-      ResultSet rs = stmt.executeQuery(query);
+      String sql = "SELECT a.password FROM dbo.Account AS a WHERE a.username = " + username;
+      ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
-        String firstname = rs.getString(1);
-        String lastname = rs.getString(2);
+        String password = rs.getString(1);
+        return pass.equals(password);
       }
-    } catch (SQLException ex) {
-      ex.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
     return false;
   }
-
 }

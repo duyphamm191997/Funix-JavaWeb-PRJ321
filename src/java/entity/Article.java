@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Article {
 
-  private String title, contents;
+  private String title, topic, contents;
   private boolean status;
   private int authorID;
   private Date createdAt;
@@ -21,8 +21,9 @@ public class Article {
   public Article() {
   }
 
-  public Article(String title, String contents, boolean status, int authorID, Date createdAt) {
+  public Article(String title, String topic, String contents, boolean status, int authorID, Date createdAt) {
     this.title = title;
+    this.topic = topic;
     this.contents = contents;
     this.status = status;
     this.authorID = authorID;
@@ -35,6 +36,14 @@ public class Article {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public String getTopic() {
+    return topic;
+  }
+
+  public void setTopic(String topic) {
+    this.topic = topic;
   }
 
   public String getContents() {
