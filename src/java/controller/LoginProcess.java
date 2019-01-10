@@ -5,6 +5,7 @@
  */
 package controller;
 
+import entity.MessageError;
 import entity.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -48,6 +49,11 @@ public class LoginProcess extends HttpServlet {
       String username = request.getParameter("username");
       String password = request.getParameter("password");
       UserDao userDao = new UserDao();
+
+      if (username == null && password == null) {
+        request.setAttribute("error", MessageError.LOGIN_FORMAT);
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+      }
       boolean existedUser = userDao.checkExistedUser(username);
       if (existedUser) {
         boolean checkPass = userDao.checkPassword(username, password);
@@ -55,11 +61,11 @@ public class LoginProcess extends HttpServlet {
           request.setAttribute("user", new User(username, password));
           request.getRequestDispatcher("").forward(request, response);
         } else {
-          request.setAttribute("error", "Wrong password");
+          request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);
           request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
       } else {
-        request.setAttribute("error", "User not found !");
+        request.setAttribute("error", MessageError.LOGIN_USER_NOT_FOUND);
         request.getRequestDispatcher("Login.jsp").forward(request, response);
       }
     } catch (Exception ex) {

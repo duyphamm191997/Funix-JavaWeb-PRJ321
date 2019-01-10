@@ -30,6 +30,13 @@ public class Article {
     this.createdAt = createdAt;
   }
 
+  public Article(String title, String topic, String contents, boolean status) {
+    this.title = title;
+    this.topic = topic;
+    this.contents = contents;
+    this.status = status;
+  }
+
   public String getTitle() {
     return title;
   }

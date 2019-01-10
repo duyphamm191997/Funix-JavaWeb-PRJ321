@@ -11,12 +11,11 @@ package entity;
  */
 public class MessageError {
 
-  public static final String USERNAME_LENGTH = "Sign-up failded, Username at least have 6 characters";
-  public static final String USERNAME_FORMAT = "Sign-up failded, Username must not contain special characters such as $#@%^&*";
-  public static final String USERNAME_EXISTED = "Sign-up failded, User had been existed !";
-  public static final String PASSWORD_LENGTH = "Sign-up failded, Password at least have 8 characters";
-  public static final String PASSWORD_FORMAT = "Sign-up failded, Password must contain at least one capital letter, one digit,"
-          + " one special character";
-  public static final String LOGIN_INCORRECT = "Login failded, Username or passwrod  is incorrect";
+  public static final String LOGIN_USER_NOT_FOUND = "Login failded, User not found !";
+  public static final String LOGIN_USER_WRONG_PASS = "Login failded, Password is wrong !";
   public static final String LOGIN_FORMAT = "Login failded, Username & Password can not be blank !";
+  public static final String ARTICLE_NULL_TITLE = "Title can't be blank";
+  public static final String ARTICLE_NULL_TOPIC = "Topic can't be blank";
+  public static final String ARTICLE_NULL_CONTENTS = "Content can't be blank";
+
 }
