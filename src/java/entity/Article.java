@@ -5,36 +5,31 @@
  */
 package entity;
 
-import java.sql.Date;
-
 /**
  *
  * @author demonslight998
  */
 public class Article {
 
-  private String title, topic, contents;
-  private boolean status;
-  private int authorID;
-  private Date createdAt;
+  private int id, status;
+  private String title, topic, contents, releaseDate, author;
 
-  public Article() {
-  }
-
-  public Article(String title, String topic, String contents, boolean status, int authorID, Date createdAt) {
+  public Article(int id, String title, String topic, String contents, String releaseDate, String author, int status) {
+    this.id = id;
     this.title = title;
     this.topic = topic;
     this.contents = contents;
+    this.releaseDate = releaseDate;
+    this.author = author;
     this.status = status;
-    this.authorID = authorID;
-    this.createdAt = createdAt;
   }
 
-  public Article(String title, String topic, String contents, boolean status) {
-    this.title = title;
-    this.topic = topic;
-    this.contents = contents;
-    this.status = status;
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getTitle() {
@@ -61,28 +56,31 @@ public class Article {
     this.contents = contents;
   }
 
-  public boolean isStatus() {
+  public String getReleaseDate() {
+    return releaseDate;
+  }
+
+  public void setReleaseDate(String releaseDate) {
+    this.releaseDate = releaseDate;
+  }
+
+  public String getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(String author) {
+    this.author = author;
+  }
+
+  public int isStatus() {
     return status;
   }
 
-  public void setStatus(boolean status) {
+  public void setStatus(int status) {
     this.status = status;
   }
 
-  public int getAuthorID() {
-    return authorID;
-  }
-
-  public void setAuthorID(int authorID) {
-    this.authorID = authorID;
-  }
-
-  public Date getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Date createdAt) {
-    this.createdAt = createdAt;
+  public Article() {
   }
 
 }

@@ -19,6 +19,7 @@ public class DBContext {
     Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
     return DriverManager.getConnection(url, userID, password);
   }
+
   private final String serverName = "localhost"; //127.0.0.1
   private final String dbName = "Funix_Blog";
   private final String portNumber = "1433";

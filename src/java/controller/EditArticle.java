@@ -47,7 +47,7 @@ public class EditArticle extends HttpServlet {
 
     Article newArticle = new Article(title, topic, contents, isPublic);
     ArticleDao artDao = new ArticleDao();
-    artDao.addArticle(newArticle);
+    artDao.updateArticle(newArticle);
 
   }
 
