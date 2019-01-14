@@ -43,15 +43,15 @@ public class UpdateArticle extends HttpServlet {
 
     if (title == null || title.isEmpty()) {
       request.setAttribute("error", MessageError.ARTICLE_NULL_TITLE);
-      request.getRequestDispatcher("EditArticle.jsp").forward(request, response);
+      request.getRequestDispatcher("./view/EditArticle.jsp").forward(request, response);
     }
     if (topic == null || topic.isEmpty()) {
       request.setAttribute("error", MessageError.ARTICLE_NULL_TOPIC);
-      request.getRequestDispatcher("EditArticle.jsp").forward(request, response);
+      request.getRequestDispatcher("./view/EditArticle.jsp").forward(request, response);
     }
     if (contents == null || contents.isEmpty()) {
       request.setAttribute("error", MessageError.ARTICLE_NULL_CONTENTS);
-      request.getRequestDispatcher("EditArticle.jsp").forward(request, response);
+      request.getRequestDispatcher("./view/EditArticle.jsp").forward(request, response);
     }
 
     Article newArticle = new Article(status, title, topic, contents, releaseDate, author);

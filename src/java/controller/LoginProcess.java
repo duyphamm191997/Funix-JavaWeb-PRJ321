@@ -56,7 +56,7 @@ public class LoginProcess extends HttpServlet {
 
       if (username == null && password == null) {
         request.setAttribute("error", MessageError.LOGIN_FORMAT);
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
       }
       boolean existedUser = userDao.checkExistedUser(username);
       if (existedUser) {
@@ -65,14 +65,14 @@ public class LoginProcess extends HttpServlet {
           request.setAttribute("articles", articleDao.getAllArticles());
           request.setAttribute("user", new User(username, password));
           session.setAttribute("user", new User(username, password));
-          request.getRequestDispatcher("").forward(request, response);
+          request.getRequestDispatcher("./view/Articles").forward(request, response);
         } else {
           request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);
-          request.getRequestDispatcher("Login.jsp").forward(request, response);
+          request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
         }
       } else {
         request.setAttribute("error", MessageError.LOGIN_USER_NOT_FOUND);
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
+        request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
       }
     } catch (Exception ex) {
       ex.printStackTrace();

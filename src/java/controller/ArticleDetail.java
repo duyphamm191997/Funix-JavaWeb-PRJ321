@@ -5,11 +5,13 @@
  */
 package controller;
 
+import entity.Article;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ArticleDao;
 
 /**
  *
@@ -25,7 +27,11 @@ public class ArticleDetail extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-
+    ArticleDao articleDao = new ArticleDao();
+    int id = Integer.parseInt(request.getParameter("id"));
+    Article thisArt = articleDao.getArticlByID(id);
+    request.setAttribute("thisArt", thisArt);
+    request.getRequestDispatcher("./view/ArticleDetail.jsp").forward(request, response);
   }
 
   /**

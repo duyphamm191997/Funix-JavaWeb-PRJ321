@@ -5,11 +5,15 @@
  */
 package controller;
 
+import entity.Article;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.ArticleDao;
 
 /**
  *
@@ -25,7 +29,15 @@ public class Articles extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-
+    ArticleDao articleDao = new ArticleDao();
+    HttpSession session = request.getSession();
+    if (session.getAttribute("user") == null) {
+      request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
+    } else {
+      List<Article> articles = articleDao.getAllArticles();
+      request.setAttribute("articles", articles);
+      request.getRequestDispatcher("./view/Articles.jsp");
+    }
   }
 
   /**

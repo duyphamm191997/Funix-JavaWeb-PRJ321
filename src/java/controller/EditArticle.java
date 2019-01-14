@@ -31,7 +31,7 @@ public class EditArticle extends HttpServlet {
     ArticleDao articleDao = new ArticleDao();
     Article thisArt = articleDao.getArticlByID(id);
     request.setAttribute("thisArt", thisArt);
-    request.getRequestDispatcher("ArticleEdit.jsp").forward(request, response);
+    request.getRequestDispatcher("./view/ArticleEdit.jsp").forward(request, response);
   }
 
   /**
