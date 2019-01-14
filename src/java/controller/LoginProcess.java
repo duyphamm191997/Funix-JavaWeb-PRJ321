@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.ArticleDao;
 import model.UserDao;
 
 /**
@@ -46,9 +48,11 @@ public class LoginProcess extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     try {
+      HttpSession session = request.getSession();
       String username = request.getParameter("username");
       String password = request.getParameter("password");
       UserDao userDao = new UserDao();
+      ArticleDao articleDao = new ArticleDao();
 
       if (username == null && password == null) {
         request.setAttribute("error", MessageError.LOGIN_FORMAT);
@@ -58,7 +62,9 @@ public class LoginProcess extends HttpServlet {
       if (existedUser) {
         boolean checkPass = userDao.checkPassword(username, password);
         if (checkPass) {
+          request.setAttribute("articles", articleDao.getAllArticles());
           request.setAttribute("user", new User(username, password));
+          session.setAttribute("user", new User(username, password));
           request.getRequestDispatcher("").forward(request, response);
         } else {
           request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);

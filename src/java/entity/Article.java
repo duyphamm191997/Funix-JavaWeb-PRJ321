@@ -24,6 +24,15 @@ public class Article {
     this.status = status;
   }
 
+  public Article(int status, String title, String topic, String contents, String releaseDate, String author) {
+    this.status = status;
+    this.title = title;
+    this.topic = topic;
+    this.contents = contents;
+    this.releaseDate = releaseDate;
+    this.author = author;
+  }
+
   public int getId() {
     return id;
   }

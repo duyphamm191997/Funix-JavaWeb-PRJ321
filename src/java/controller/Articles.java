@@ -5,19 +5,17 @@
  */
 package controller;
 
-import entity.Article;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ArticleDao;
 
 /**
  *
  * @author demonslight998
  */
-public class EditArticle extends HttpServlet {
+public class Articles extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -27,11 +25,7 @@ public class EditArticle extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    int id = Integer.parseInt(request.getParameter("id"));
-    ArticleDao articleDao = new ArticleDao();
-    Article thisArt = articleDao.getArticlByID(id);
-    request.setAttribute("thisArt", thisArt);
-    request.getRequestDispatcher("ArticleEdit.jsp").forward(request, response);
+
   }
 
   /**

@@ -18,7 +18,7 @@ import model.ArticleDao;
  *
  * @author demonslight998
  */
-public class AddArticle extends HttpServlet {
+public class UpdateArticle extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,7 +31,16 @@ public class AddArticle extends HttpServlet {
     String title = request.getParameter("title");
     String topic = request.getParameter("topic");
     String contents = request.getParameter("contents");
-    boolean isPublic = (request.getParameter("isPublic") == "isPublic");
+    String releaseDate = request.getParameter("releaseDate");
+    String author = request.getParameter("author");
+    int status = -1;
+    String[] isPublic = request.getParameterValues("status");
+    if (isPublic == null) {
+      status = 0;
+    } else {
+      status = 1;
+    }
+
     if (title == null || title.isEmpty()) {
       request.setAttribute("error", MessageError.ARTICLE_NULL_TITLE);
       request.getRequestDispatcher("EditArticle.jsp").forward(request, response);
@@ -45,9 +54,9 @@ public class AddArticle extends HttpServlet {
       request.getRequestDispatcher("EditArticle.jsp").forward(request, response);
     }
 
-    Article newArticle = new Article(title, topic, contents, isPublic);
+    Article newArticle = new Article(status, title, topic, contents, releaseDate, author);
     ArticleDao artDao = new ArticleDao();
-    artDao.addArticle(newArticle);
+    artDao.updateArticle(newArticle);
   }
 
   /**
