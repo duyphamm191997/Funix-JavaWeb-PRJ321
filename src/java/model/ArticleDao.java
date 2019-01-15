@@ -80,15 +80,13 @@ public class ArticleDao {
     try {
       con = db.getConnection();
       String sql = "UPDATE dbo.Article SET title = ?, topic = ?, contents = ?, "
-              + "status = ?, releaseDate = ?, author = ? WHERE id = ?";
+              + "status = ? WHERE id = ?";
       PreparedStatement stmt = con.prepareStatement(sql);
       stmt.setString(1, art.getTitle());
       stmt.setString(2, art.getTopic());
       stmt.setString(3, art.getContents());
       stmt.setInt(4, art.isStatus());
-      stmt.setString(5, art.getReleaseDate());
-      stmt.setString(6, art.getAuthor());
-      stmt.setInt(7, art.getId());
+      stmt.setInt(5, art.getId());
       stmt.executeUpdate();
       stmt.close();
       con.close();

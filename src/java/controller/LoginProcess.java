@@ -62,10 +62,10 @@ public class LoginProcess extends HttpServlet {
       if (existedUser) {
         boolean checkPass = userDao.checkPassword(username, password);
         if (checkPass) {
-          request.setAttribute("articles", articleDao.getAllArticles());
+          request.setAttribute("listArticles", articleDao.getAllArticles());
           request.setAttribute("user", new User(username, password));
           session.setAttribute("user", new User(username, password));
-          request.getRequestDispatcher("./view/Articles").forward(request, response);
+          request.getRequestDispatcher("./view/Articles.jsp").forward(request, response);
         } else {
           request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);
           request.getRequestDispatcher("./view/Login.jsp").forward(request, response);

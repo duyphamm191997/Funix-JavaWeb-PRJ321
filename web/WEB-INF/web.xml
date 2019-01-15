@@ -12,6 +12,10 @@
     <servlet-name>UpdateArticle</servlet-name>
     <servlet-class>controller.UpdateArticle</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>EditArticle</servlet-name>
+    <servlet-class>controller.EditArticle</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>LoginProcess</servlet-name>
     <url-pattern>/LoginProcess</url-pattern>
@@ -34,6 +38,5 @@
   <welcome-file-list>
     <welcome-file>WelcomePage.jsp</welcome-file>
   </welcome-file-list>
-  <servlet-name>EditArticle</servlet-name>
-  <servlet-class>controller.EditArticle</servlet-class>
+
 </web-app>

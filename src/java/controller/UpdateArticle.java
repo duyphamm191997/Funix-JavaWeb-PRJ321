@@ -31,8 +31,6 @@ public class UpdateArticle extends HttpServlet {
     String title = request.getParameter("title");
     String topic = request.getParameter("topic");
     String contents = request.getParameter("contents");
-    String releaseDate = request.getParameter("releaseDate");
-    String author = request.getParameter("author");
     int status = -1;
     String[] isPublic = request.getParameterValues("status");
     if (isPublic == null) {
@@ -54,7 +52,7 @@ public class UpdateArticle extends HttpServlet {
       request.getRequestDispatcher("./view/EditArticle.jsp").forward(request, response);
     }
 
-    Article newArticle = new Article(status, title, topic, contents, releaseDate, author);
+    Article newArticle = new Article(status, title, topic, contents);
     ArticleDao artDao = new ArticleDao();
     artDao.updateArticle(newArticle);
   }
