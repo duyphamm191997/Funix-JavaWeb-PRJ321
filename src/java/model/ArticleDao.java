@@ -26,7 +26,7 @@ public class ArticleDao {
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Article ORDER BY releaseDate DESC");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Article ORDER BY CreatedAt DESC");
       Article article = new Article();
       while (rs.next()) {
         article.setId(rs.getInt(1));
@@ -34,8 +34,8 @@ public class ArticleDao {
         article.setTopic(rs.getString(3));
         article.setContents(rs.getString(4));
         article.setStatus(rs.getInt(5));
-        article.setReleaseDate(rs.getString(6));
-        article.setAuthor(rs.getString(7));
+        article.setAuthor(rs.getString(6));
+        article.setCreatedAt(rs.getDate(7));
         listArticle.add(article);
       }
       rs.close();
@@ -62,8 +62,9 @@ public class ArticleDao {
         article.setTopic(rs.getString(3));
         article.setContents(rs.getString(4));
         article.setStatus(rs.getInt(5));
-        article.setReleaseDate(rs.getString(6));
-        article.setAuthor(rs.getString(7));
+        article.setAuthor(rs.getString(6));
+        article.setCreatedAt(rs.getDate(7));
+
       }
       rs.close();
       stmt.close();
@@ -85,7 +86,7 @@ public class ArticleDao {
       stmt.setString(1, art.getTitle());
       stmt.setString(2, art.getTopic());
       stmt.setString(3, art.getContents());
-      stmt.setInt(4, art.isStatus());
+      stmt.setInt(4, art.getStatus());
       stmt.setInt(5, art.getId());
       stmt.executeUpdate();
       stmt.close();

@@ -5,6 +5,8 @@
  */
 package entity;
 
+import java.sql.Date;
+
 /**
  *
  * @author demonslight998
@@ -12,23 +14,17 @@ package entity;
 public class Article {
 
   private int id, status;
-  private String title, topic, contents, releaseDate, author;
+  private String title, topic, contents, author;
+  private Date createdAt;
 
-  public Article(int id, String title, String topic, String contents, String releaseDate, String author, int status) {
+  public Article(int id, int status, String title, String topic, String contents, String author, Date createdAt) {
     this.id = id;
+    this.status = status;
     this.title = title;
     this.topic = topic;
     this.contents = contents;
-    this.releaseDate = releaseDate;
     this.author = author;
-    this.status = status;
-  }
-
-  public Article(int status, String title, String topic, String contents) {
-    this.status = status;
-    this.title = title;
-    this.topic = topic;
-    this.contents = contents;
+    this.createdAt = createdAt;
   }
 
   public int getId() {
@@ -37,6 +33,14 @@ public class Article {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public int getStatus() {
+    return status;
+  }
+
+  public void setStatus(int status) {
+    this.status = status;
   }
 
   public String getTitle() {
@@ -63,14 +67,6 @@ public class Article {
     this.contents = contents;
   }
 
-  public String getReleaseDate() {
-    return releaseDate;
-  }
-
-  public void setReleaseDate(String releaseDate) {
-    this.releaseDate = releaseDate;
-  }
-
   public String getAuthor() {
     return author;
   }
@@ -79,12 +75,12 @@ public class Article {
     this.author = author;
   }
 
-  public int isStatus() {
-    return status;
+  public Date getCreatedAt() {
+    return createdAt;
   }
 
-  public void setStatus(int status) {
-    this.status = status;
+  public void setCreatedAt(Date createdAt) {
+    this.createdAt = createdAt;
   }
 
   public Article() {
