@@ -27,7 +27,7 @@
               <p>${art.getContents()}</p>
             </div>
             <div class="resume-date text-md-right">
-              <span class="text-primary">${art.getReleaseDate()}</span>
+              <span class="text-primary">${art.getCreatedAt()}</span>
             </div>
           </div>
         </c:forEach>

@@ -26,7 +26,8 @@ public class ArticleDao {
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Article ORDER BY CreatedAt DESC");
+      ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Article WHERE status = 1"
+              + " ORDER BY CreatedAt DESC");
       Article article = new Article();
       while (rs.next()) {
         article.setId(rs.getInt(1));
@@ -49,7 +50,7 @@ public class ArticleDao {
 
   public Article getArticlByID(int id) {
     Article article = new Article();
-    String query = "SELECT * FROM dbo.Article WHERE id = " + id;
+    String query = "SELECT * FROM dbo.Article WHERE status = 1 AND id = " + id;
     Connection con = null;
     DBContext db = new DBContext();
     try {

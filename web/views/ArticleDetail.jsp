@@ -8,21 +8,41 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="../fragment/header.jsp" />
 
-<body id="page-top">
-
-  <jsp:include page="../fragment/navIndex.jsp" />
-
-  <div class="container" style="margin-top: 2rem;">
-    <h3>${thisArt.getTitle()}</h3>
-    <h4>${thisArt.getTopic()}</h4>
-    <h5>${thisArt.getContents()}</h5>
-    <h6>${thisArt.getReleaseDate()}</h6>
-    <h6>${thisArt.getAuthor()}</h6>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input">
-      <label class="form-check-label" for="exampleCheck1">${(thisArt.getStatus() == 0) ? "Draft" : "Published"} </label>
+<div class="container" style="margin-top: 2rem;">
+  <form>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">${thisArt.getTitle()}</p>
+      </div>
     </div>
-  </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Topic</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">${thisArt.getTopic()}</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Contents</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">${thisArt.getContents()}</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Author</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">${thisArt.getAuthor()}</p>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label">Created At</label>
+      <div class="col-sm-10">
+        <p class="form-control-static">${thisArt.getCreatedAt()}</p>
+      </div>
+    </div>
+  </form>
+</div>
 
-  <jsp:include page="../fragment/footer.jsp" />
+
+<jsp:include page="../fragment/footer.jsp" />
 
