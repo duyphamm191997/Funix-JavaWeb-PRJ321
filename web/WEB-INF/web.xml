@@ -6,7 +6,7 @@
   </filter>
   <filter-mapping>
     <filter-name>Authentication</filter-name>
-    <url-pattern>/PreEditArticle</url-pattern>
+    <url-pattern>/EditArticle</url-pattern>
   </filter-mapping>
   <servlet>
     <servlet-name>ArticleDetails</servlet-name>

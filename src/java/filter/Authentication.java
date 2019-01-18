@@ -45,7 +45,7 @@ public class Authentication implements Filter {
     HttpSession session = ((HttpServletRequest) request).getSession();
     User user = (User) session.getAttribute("user");
     if (user == null) {
-      ((HttpServletResponse) response).sendRedirect("../view/Login.jsp");
+      ((HttpServletResponse) response).sendRedirect("./view/Login.jsp");
     }
 
     // Write code here to process the request and/or response before
