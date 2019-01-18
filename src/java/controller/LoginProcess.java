@@ -5,9 +5,11 @@
  */
 package controller;
 
+import entity.Article;
 import entity.MessageError;
 import entity.User;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,11 +60,17 @@ public class LoginProcess extends HttpServlet {
         request.setAttribute("error", MessageError.LOGIN_FORMAT);
         request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
       }
+      System.out.println(username + ", " + password);
       boolean existedUser = userDao.checkExistedUser(username);
+      System.out.println(existedUser);
       if (existedUser) {
         boolean checkPass = userDao.checkPassword(username, password);
         if (checkPass) {
-          request.setAttribute("listArticles", articleDao.getAllArticles());
+          List<Article> listArt = articleDao.getAllArticles();
+          for (Article article : listArt) {
+            System.out.println(article.getId());
+          }
+          request.setAttribute("listArticles", listArt);
           request.setAttribute("user", new User(username, password));
           session.setAttribute("user", new User(username, password));
           request.getRequestDispatcher("./view/Articles.jsp").forward(request, response);

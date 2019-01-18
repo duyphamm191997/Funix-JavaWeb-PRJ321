@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="entity.Article"%>
+<%@page import="model.ArticleDao"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
     Document   : Posts
@@ -16,13 +19,19 @@
 
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
       <div class="my-auto">
-        <h2 class="mb-5">My Articles</h2>
+        <%
+          ArticleDao articleDao = new ArticleDao();
+          List<Article> listArticles = articleDao.getAllArticles();
+          request.setAttribute("listArticles", listArticles);
+          request.getRequestDispatcher("./view/Articles.jsp");
+        %>
+        <h2 class="mb-5">The Articles</h2>
 
         <c:forEach var="art" items="${listArticles}">
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
             <div class="resume-content mr-auto">
-              <h3 class="mb-0">${art.getTitle()}</h3>
-              <h3 class="mb-0"><a href="./EditArticle?id=${art.getId()}">Edit</a></h3>
+              <h3 class="mb-0" ><a style="color: #2196F3" href="ArticleDetails?id=${art.getId()}">${art.getTitle()}</a></h3>
+              <h5 class="mb-0"><a href="EditArticle?id=${art.getId()}">Edit</a></h5>
               <div class="subheading mb-3">${art.getTopic()}</div>
               <p>${art.getContents()}</p>
             </div>

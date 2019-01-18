@@ -18,15 +18,15 @@
   <body>
     <div class="container form-display">
       <div class="container">
-        <h3 style="color: red">${error}</h3>
         <div class="row">
           <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
+              <h3 style="color: red">${error}</h3>
               <div class="card-body">
                 <h5 class="card-title text-center">Login</h5>
                 <form class="form-signin" action="/LoginProcess" method="POST">
                   <div class="form-label-group">
-                    <input type="text" id="inputEmail" class="form-control" name="name" placeholder="Enter username" required autofocus>
+                    <input type="text" id="inputEmail" class="form-control" name="username" placeholder="Enter username" required autofocus>
                     <label for="inputEmail">Username</label>
                   </div>
 

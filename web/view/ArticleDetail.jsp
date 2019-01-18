@@ -13,31 +13,31 @@
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Title</label>
       <div class="col-sm-10">
-        <p class="form-control-static">${thisArt.getTitle()}</p>
+        <p class="form-control-static" style="color: #BD5D38" style="color: #BD5D38">${thisArt.getTitle()}</p>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Topic</label>
       <div class="col-sm-10">
-        <p class="form-control-static">${thisArt.getTopic()}</p>
+        <p class="form-control-static" style="color: #BD5D38">${thisArt.getTopic()}</p>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Contents</label>
       <div class="col-sm-10">
-        <p class="form-control-static">${thisArt.getContents()}</p>
+        <p class="form-control-static" style="color: #BD5D38">${thisArt.getContents()}</p>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Author</label>
       <div class="col-sm-10">
-        <p class="form-control-static">${thisArt.getAuthor()}</p>
+        <p class="form-control-static" style="color: #BD5D38">${thisArt.getAuthor()}</p>
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label">Created At</label>
       <div class="col-sm-10">
-        <p class="form-control-static">${thisArt.getCreatedAt()}</p>
+        <p class="form-control-static" style="color: #BD5D38">${thisArt.getCreatedAt()}</p>
       </div>
     </div>
   </form>

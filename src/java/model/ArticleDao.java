@@ -28,8 +28,8 @@ public class ArticleDao {
       Statement stmt = con.createStatement();
       ResultSet rs = stmt.executeQuery("SELECT * FROM dbo.Article WHERE status = 1"
               + " ORDER BY CreatedAt DESC");
-      Article article = new Article();
       while (rs.next()) {
+        Article article = new Article();
         article.setId(rs.getInt(1));
         article.setTitle(rs.getString(2));
         article.setTopic(rs.getString(3));

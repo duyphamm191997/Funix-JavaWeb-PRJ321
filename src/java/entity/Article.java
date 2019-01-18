@@ -27,6 +27,15 @@ public class Article {
     this.createdAt = createdAt;
   }
 
+  public Article(int id, int status, String title, String topic, String contents, String author) {
+    this.id = id;
+    this.status = status;
+    this.title = title;
+    this.topic = topic;
+    this.contents = contents;
+    this.author = author;
+  }
+
   public int getId() {
     return id;
   }
