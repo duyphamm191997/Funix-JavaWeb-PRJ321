@@ -1,44 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  <filter>
-    <filter-name>Authentication</filter-name>
-    <filter-class>filter.Authentication</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>Authentication</filter-name>
-    <url-pattern>/EditArticle</url-pattern>
-  </filter-mapping>
+  <!-- SMTP settings -->
+  <context-param>
+    <param-name>host</param-name>
+    <param-value>smtp.gmail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>port</param-name>
+    <param-value>587</param-value>
+  </context-param>
+  <context-param>
+    <param-name>user</param-name>
+    <param-value>mail.funix.test@gmail.com</param-value>
+  </context-param>
+  <context-param>
+    <param-name>pass</param-name>
+    <param-value>funix123</param-value>
+  </context-param>
+  <!-- SMTP settings -->
   <servlet>
-    <servlet-name>ArticleDetails</servlet-name>
-    <servlet-class>controller.ArticleDetails</servlet-class>
+    <servlet-name>LogoutProcess</servlet-name>
+    <servlet-class>controller.LogoutProcess</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>LoginProcess</servlet-name>
-    <servlet-class>controller.LoginProcess</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>EditArticle</servlet-name>
-    <servlet-class>controller.EditArticle</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>PreEditArticle</servlet-name>
-    <servlet-class>controller.PreEditArticle</servlet-class>
+    <servlet-name>SendMail</servlet-name>
+    <servlet-class>controller.SendMail</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ArticleDetails</servlet-name>
-    <url-pattern>/ArticleDetails</url-pattern>
+    <servlet-name>LogoutProcess</servlet-name>
+    <url-pattern>/LogoutProcess</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>LoginProcess</servlet-name>
-    <url-pattern>/LoginProcess</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>EditArticle</servlet-name>
-    <url-pattern>/EditArticle</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>PreEditArticle</servlet-name>
-    <url-pattern>/PreEditArticle</url-pattern>
+    <servlet-name>SendMail</servlet-name>
+    <url-pattern>/SendMail</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>

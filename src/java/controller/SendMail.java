@@ -5,22 +5,44 @@
  */
 package controller;
 
-import entity.MessageError;
-import entity.User;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.EmailDao;
 
 /**
  *
  * @author demonslight998
  */
-public class LoginProcess extends HttpServlet {
+public class SendMail extends HttpServlet {
+
+  /**
+   * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+   * methods.
+   *
+   * @param request servlet request
+   * @param response servlet response
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs
+   */
+  protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+          throws ServletException, IOException {
+    response.setContentType("text/html;charset=UTF-8");
+    try (PrintWriter out = response.getWriter()) {
+      /* TODO output your page here. You may use following sample code. */
+      out.println("<!DOCTYPE html>");
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<title>Servlet SendMail</title>");
+      out.println("</head>");
+      out.println("<body>");
+      out.println("<h1>Servlet SendMail at " + request.getContextPath() + "</h1>");
+      out.println("</body>");
+      out.println("</html>");
+    }
+  }
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
   /**
@@ -34,6 +56,7 @@ public class LoginProcess extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
+    processRequest(request, response);
   }
 
   /**
@@ -47,36 +70,7 @@ public class LoginProcess extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
-    try {
-      HttpSession session = request.getSession();
-      String username = request.getParameter("username");
-      String password = request.getParameter("password");
-      EmailDao userDao = new EmailDao();
-
-      if (username == null && password == null) {
-        request.setAttribute("error", MessageError.LOGIN_FORMAT);
-        request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
-      }
-      System.out.println(username + ", " + password);
-      boolean existedUser = userDao.checkExistedUser(username);
-      System.out.println(existedUser);
-      if (existedUser) {
-        boolean checkPass = userDao.checkPassword(username, password);
-        if (checkPass) {
-          request.setAttribute("user", new User(username, password));
-          session.setAttribute("user", new User(username, password));
-          request.getRequestDispatcher("./view/Articles.jsp").forward(request, response);
-        } else {
-          request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);
-          request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
-        }
-      } else {
-        request.setAttribute("error", MessageError.LOGIN_USER_NOT_FOUND);
-        request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
-      }
-    } catch (Exception ex) {
-      ex.printStackTrace();
-    }
+    processRequest(request, response);
   }
 
   /**
