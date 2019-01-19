@@ -13,7 +13,7 @@
 
   <div class="container" style="margin-top: 2rem;">
     <h5 style="color: red">${error}</h5>
-    <form action="PreEditArticle" method="POST">
+    <form action="/SendMail" method="POST">
       <input type="hidden" class="form-control" name="id" value="${thisArt.getId()}">
       <div class="form-group">
         <label for="">Title</label>

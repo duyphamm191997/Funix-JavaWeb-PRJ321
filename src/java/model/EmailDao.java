@@ -55,3 +55,4 @@ public class EmailDao {
     // sends the e-mail
     Transport.send(msg);
   }
+}
