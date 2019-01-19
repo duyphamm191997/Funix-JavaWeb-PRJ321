@@ -9,7 +9,7 @@
 <jsp:include page="../fragment/header.jsp" />
 
 <div class="container">
-  <h3> ${result} </h3>
+  <h3 style="color: #2196F3"> ${result} </h3>
 </div>
 
 <jsp:include page="../fragment/footer.jsp" />

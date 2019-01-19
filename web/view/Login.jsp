@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Charm|Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/login.css"/>
-    <title>Result</title>
+    <title>Login</title>
   </head>
   <body>
     <div class="container form-display">

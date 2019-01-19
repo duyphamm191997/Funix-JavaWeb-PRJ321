@@ -21,7 +21,7 @@ public class DBContext {
   }
 
   private final String serverName = "localhost"; //127.0.0.1
-  private final String dbName = "Funix_Blog";
+  private final String dbName = "Funix_SendMail";
   private final String portNumber = "1433";
   private final String userID = "sa";
   private final String password = "123456";
