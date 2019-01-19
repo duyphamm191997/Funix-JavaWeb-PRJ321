@@ -23,7 +23,7 @@ public class UserDao {
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      String query = "SELECT a.username FROM dbo.Account AS a WHERE a.username = '" + usernameXXX + "'";
+      String query = "SELECT a.username FROM dbo.[User] AS a WHERE a.username = '" + usernameXXX + "'";
       ResultSet rs = stmt.executeQuery(query);
       while (rs.next()) {
         String username = rs.getString(1);
@@ -43,7 +43,7 @@ public class UserDao {
     try {
       con = db.getConnection();
       Statement stmt = con.createStatement();
-      String sql = "SELECT a.password FROM dbo.Account AS a WHERE a.username = '" + username + "'";
+      String sql = "SELECT a.password FROM dbo.[User] AS a WHERE a.username = '" + username + "'";
       ResultSet rs = stmt.executeQuery(sql);
       while (rs.next()) {
         String password = rs.getString(1);

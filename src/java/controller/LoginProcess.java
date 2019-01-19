@@ -63,7 +63,7 @@ public class LoginProcess extends HttpServlet {
         if (checkPass) {
           request.setAttribute("user", new User(username, password));
           session.setAttribute("user", new User(username, password));
-          request.getRequestDispatcher("./view/Articles.jsp").forward(request, response);
+          request.getRequestDispatcher("./view/SendMail.jsp").forward(request, response);
         } else {
           request.setAttribute("error", MessageError.LOGIN_USER_WRONG_PASS);
           request.getRequestDispatcher("./view/Login.jsp").forward(request, response);

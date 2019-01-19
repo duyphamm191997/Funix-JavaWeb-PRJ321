@@ -11,6 +11,10 @@
     <url-pattern>/view/ResultSentMail.jsp</url-pattern>
   </filter-mapping>
   <servlet>
+    <servlet-name>LoginProcess</servlet-name>
+    <servlet-class>controller.LoginProcess</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>LogoutProcess</servlet-name>
     <servlet-class>controller.LogoutProcess</servlet-class>
   </servlet>
@@ -18,6 +22,10 @@
     <servlet-name>SendMail</servlet-name>
     <servlet-class>controller.SendMail</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginProcess</servlet-name>
+    <url-pattern>/LoginProcess</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>LogoutProcess</servlet-name>
     <url-pattern>/LogoutProcess</url-pattern>

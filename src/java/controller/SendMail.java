@@ -67,19 +67,21 @@ public class SendMail extends HttpServlet {
       }
 
       int countCc = 0;
+      Message msg1 = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
       for (String recCc : ccList) {
-        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
         myCcList[countCc] = new InternetAddress(recCc.trim());
-        emailDao.SendMail(msg, myCcList, Message.RecipientType.CC, email, subject, content);
         countCc++;
       }
+      emailDao.SendMail(msg1, myCcList, Message.RecipientType.CC, email, subject, content);
 
       int countBcc = 0;
+      Message msg2 = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
       for (String recBcc : bccList) {
-        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
         myBccList[countBcc] = new InternetAddress(recBcc.trim());
-        emailDao.SendMail(msg, myBccList, Message.RecipientType.BCC, email, subject, content);
+        countBcc++;
       }
+      emailDao.SendMail(msg2, myBccList, Message.RecipientType.BCC, email, subject, content);
+
       request.setAttribute("result", "Sent email successfully !");
       request.getRequestDispatcher("./view/ResultSentEmail.jsp").forward(request, response);
     } catch (MessagingException ex) {
