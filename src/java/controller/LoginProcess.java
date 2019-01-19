@@ -56,7 +56,6 @@ public class LoginProcess extends HttpServlet {
         request.setAttribute("error", MessageError.LOGIN_FORMAT);
         request.getRequestDispatcher("./view/Login.jsp").forward(request, response);
       }
-      System.out.println(username + ", " + password);
       boolean existedUser = userDao.checkExistedUser(username);
       System.out.println(existedUser);
       if (existedUser) {
