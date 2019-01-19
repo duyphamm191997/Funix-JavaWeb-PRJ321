@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/public/css/resume.css</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/controller/SignUpHanlding.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/controller/UserCount.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/index.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/controller/Profile.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/model/UserDao.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/welcomePage.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/fragment/navIndex.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/profile.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/model/MessageError.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/controller/LoginProcess.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/Login.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/filter/Authentication.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/userCounter.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/fragment/navWelcome.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/src/java/controller/WelcomePageServlet.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Ass3/Web-Application-java/web/view/signUp.jsp</file>
+        </group>
+    </open-files>
+</project-private>

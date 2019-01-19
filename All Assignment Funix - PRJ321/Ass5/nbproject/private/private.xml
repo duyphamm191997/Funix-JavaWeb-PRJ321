@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/web/README_GUIDE_ASSIGNMENT5.md</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/entity/MailInfo.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/controller/SendMail.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/filter/Authentication.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/web/view/SendMail.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/controller/LoginProcess.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/model/EmailDao.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/web/view/Login.jsp</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/entity/User.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/entity/MessageError.java</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/demonslight998/Desktop/GitHub/Web-Application-java/src/java/model/UserDao.java</file>
+        </group>
+    </open-files>
+</project-private>
