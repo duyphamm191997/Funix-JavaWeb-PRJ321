@@ -45,7 +45,7 @@ public class SendMail extends HttpServlet {
       String subject = request.getParameter("subject");
       String content = request.getParameter("content");
 
-      String recipientTo = request.getParameter("recipient");
+      String recipientTo = request.getParameter("to");
       String[] toList = recipientTo.split(", ");
 
       String recipientCc = request.getParameter("cc");
@@ -54,27 +54,32 @@ public class SendMail extends HttpServlet {
       String recipientBcc = request.getParameter("bcc");
       String[] bccList = recipientBcc.split(", ");
 
-      InternetAddress[] recipientTos = new InternetAddress[toList.length];
-      int counterTo = 0;
-      for (String rec : recipientList) {
-        recipientAddress[counterTo] = new InternetAddress(rec.trim());
-        counterTo++;
+      InternetAddress[] myToList = new InternetAddress[toList.length];
+      InternetAddress[] myCcList = new InternetAddress[ccList.length];
+      InternetAddress[] myBccList = new InternetAddress[bccList.length];
+
+      int countTo = 0;
+      for (String recTo : toList) {
+        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
+        myToList[countTo] = new InternetAddress(recTo.trim());
+        emailDao.SendMail(msg, myToList, Message.RecipientType.TO, email, subject, content);
+        countTo++;
       }
 
-      Message msg = new MimeMessage(emailDao.SendEmail(host, port, email, pass, recipient, cc, subject, pass));
-      msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
-      msg.addHeader("format", "flowed");
-      msg.addHeader("Content-Transfer-Encoding", "8bit");
-      msg.setFrom(new InternetAddress(email, "Funix-Test"));
-      msg.setRecipients(Message.RecipientType.TO, recipientAddress);
-      msg.setRecipients(Message.RecipientType.CC, toCC);
-      msg.setSubject(subject);
-      msg.setSentDate(new Date());
-      msg.setText(message);
+      int countCc = 0;
+      for (String recCc : ccList) {
+        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
+        myCcList[countCc] = new InternetAddress(recCc.trim());
+        emailDao.SendMail(msg, myCcList, Message.RecipientType.CC, email, subject, content);
+        countCc++;
+      }
 
-      // sends the e-mail
-      Transport.send(msg);
-
+      int countBcc = 0;
+      for (String recBcc : bccList) {
+        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
+        myBccList[countBcc] = new InternetAddress(recBcc.trim());
+        emailDao.SendMail(msg, myBccList, Message.RecipientType.BCC, email, subject, content);
+      }
       request.setAttribute("result", "Sent email successfully !");
       request.getRequestDispatcher("./view/ResultSentEmail.jsp").forward(request, response);
     } catch (MessagingException ex) {
