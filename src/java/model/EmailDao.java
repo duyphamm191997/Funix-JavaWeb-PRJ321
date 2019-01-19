@@ -41,13 +41,14 @@ public class EmailDao {
     return session;
   }
 
-  public void SendMail(Message msg, InternetAddress[] listAddress, Message.RecipientType recipentType, String email, String subject, String content) throws UnsupportedEncodingException {
+  public void SendMail(Message msg, InternetAddress address, Message.RecipientType recipentType,
+          String email, String subject, String content) throws UnsupportedEncodingException {
     try {
       msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
       msg.addHeader("format", "flowed");
       msg.addHeader("Content-Transfer-Encoding", "8bit");
       msg.setFrom(new InternetAddress(email, "Funix-Test"));
-      msg.setRecipients(recipentType, listAddress);
+      msg.setRecipient(recipentType, address);
       msg.setSubject(subject);
       msg.setSentDate(new Date());
       msg.setText(content);

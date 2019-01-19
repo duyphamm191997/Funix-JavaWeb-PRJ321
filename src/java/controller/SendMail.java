@@ -47,40 +47,48 @@ public class SendMail extends HttpServlet {
 
       String recipientTo = request.getParameter("to");
       String[] toList = recipientTo.split(", ");
+      for (String string : toList) {
+        System.out.println(string);
+      }
 
       String recipientCc = request.getParameter("cc");
       String[] ccList = recipientCc.split(", ");
+      for (String string : ccList) {
+        System.out.println(string);
+      }
 
       String recipientBcc = request.getParameter("bcc");
       String[] bccList = recipientBcc.split(", ");
+      for (String string : bccList) {
+        System.out.println(string);
+      }
 
       InternetAddress[] myToList = new InternetAddress[toList.length];
       InternetAddress[] myCcList = new InternetAddress[ccList.length];
       InternetAddress[] myBccList = new InternetAddress[bccList.length];
 
+      Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
+
       int countTo = 0;
       for (String recTo : toList) {
-        Message msg = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
         myToList[countTo] = new InternetAddress(recTo.trim());
-        emailDao.SendMail(msg, myToList, Message.RecipientType.TO, email, subject, content);
+        emailDao.SendMail(msg, myToList[countTo], Message.RecipientType.TO, email, subject, content);
         countTo++;
       }
 
       int countCc = 0;
-      Message msg1 = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
       for (String recCc : ccList) {
         myCcList[countCc] = new InternetAddress(recCc.trim());
+        emailDao.SendMail(msg, myCcList[countCc], Message.RecipientType.CC, email, subject, content);
         countCc++;
       }
-      emailDao.SendMail(msg1, myCcList, Message.RecipientType.CC, email, subject, content);
 
       int countBcc = 0;
-      Message msg2 = new MimeMessage(emailDao.preSendEmail(host, port, email, pass, subject, pass));
       for (String recBcc : bccList) {
         myBccList[countBcc] = new InternetAddress(recBcc.trim());
+        emailDao.SendMail(msg, myBccList[countBcc], Message.RecipientType.BCC, email, subject, content);
         countBcc++;
       }
-      emailDao.SendMail(msg2, myBccList, Message.RecipientType.BCC, email, subject, content);
 
       request.setAttribute("result", "Sent email successfully !");
       request.getRequestDispatcher("./view/ResultSentEmail.jsp").forward(request, response);
